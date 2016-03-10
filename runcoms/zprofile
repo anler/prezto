@@ -1,4 +1,4 @@
-#
+# -*- Sh -*-
 # Executes commands at login pre-zshrc.
 #
 # Authors:
@@ -13,12 +13,22 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
 
+if [[ "$OSTYPE" == linux* ]]; then
+  export BROWSER='xdg-open'
+fi
+
+#
+# nvm
+#
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 #
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='zile'
+export VISUAL='zile'
 export PAGER='less'
 
 #
@@ -37,12 +47,17 @@ fi
 typeset -gU cdpath fpath mailpath path
 
 # Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
+cdpath=(
+  ~/repos/private
+  ~/repos/public
+  ~/repos/copycat
+  ~/repos/watch
+  $cdpath
+)
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $HOME/{bin,.local/bin}
   /usr/local/{bin,sbin}
   $path
 )

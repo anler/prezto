@@ -1,4 +1,4 @@
-#
+# -*- Sh -*-
 # Executes commands at the start of an interactive session.
 #
 # Authors:
@@ -11,3 +11,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+alias -g L="| less"
+alias -g G="| grep -i"
+
+function take {
+  mkdir -p $@ && cd $@
+}
