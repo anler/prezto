@@ -17,3 +17,7 @@ alias -g G="| grep -i"
 function take {
   mkdir -p $@ && cd $@
 }
+
+function em {
+  emacsclient -c -a'' -n -f ~/.emacs.d/server/server
+}
