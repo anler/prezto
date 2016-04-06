@@ -10,14 +10,45 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
 alias -g L="| less"
 alias -g G="| grep -i"
+alias open=xdg-open
+alias y=yaourt -Ssq
+alias l.="ls -d .*"
+alias ...="../.."
+alias ....="../../.."
+alias .....="../../../.."
+alias .3="../.."
+alias .4="../../.."
+alias .5="../../../.."
+alias bc=bc -l
+alias h=history
+alias j=jobs -l
+alias ports=netstat -tulanp
+alias ping="ping -c 5"
+alias path="echo -e ${PATH//:/\\n}"
+alias rm="rm -I --preserve-root"
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"
+alias root=sudo -i
 
 function take {
   mkdir -p $@ && cd $@
 }
 
 function em {
-  emacsclient -c -a'' -n -f ~/.emacs.d/server/server
+  if [ ! "$EMACS" = "" ]
+  then
+    emacsclient -n -a '' $@
+  else
+    emacsclient -nc -a '' $@
+  fi
+}
+
+function chpwd {
+  emulate -L zsh
+  if [[ -f .nvmrc ]] then
+    nvm use
+  fi
 }

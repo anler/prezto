@@ -87,3 +87,8 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+#
+# User level hosts file
+#
+export HOSTALIASES=~/.hosts
