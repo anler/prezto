@@ -13,7 +13,7 @@ fi
 alias -g L="| less"
 alias -g G="| grep -i"
 alias open=xdg-open
-alias y=yaourt -Ssq
+alias y=yaourt
 alias l.="ls -d .*"
 alias ...="../.."
 alias ....="../../.."
@@ -21,10 +21,10 @@ alias .....="../../../.."
 alias .3="../.."
 alias .4="../../.."
 alias .5="../../../.."
-alias bc=bc -l
+alias bc="bc -l"
 alias h=history
-alias j=jobs -l
-alias ports=netstat -tulanp
+alias j="jobs -l"
+alias ports="netstat -tulanp"
 alias ping="ping -c 5"
 alias path="echo -e ${PATH//:/\\n}"
 alias rm="rm -I --preserve-root"
@@ -32,6 +32,14 @@ alias chown="chown --preserve-root"
 alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 alias root=sudo -i
+alias t="tmux attach -t base || tmux new -s base"
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+function d {
+  docker-compose $@ 2>/dev/null || docker $@
+}
 
 function take {
   mkdir -p $@ && cd $@
