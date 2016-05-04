@@ -42,8 +42,6 @@ alias d=docker
 alias drm='docker rm $(docker ps -aq)'
 alias c=docker-compose
 
-alias ems='emacsclient -n -c -s /tmp/emacs1000/server'
-
 function take {
   mkdir -p $@ && cd $@
 }
@@ -52,7 +50,7 @@ function em {
   if [ -e /tmp/emacs1000/server ]; then
     emacsclient -n -c -s /tmp/emacs1000/server $@
   else
-    nohup emacs $@
+    nohup "emacs $@" &
   fi
 }
 
@@ -62,8 +60,8 @@ function chpwd {
   if [[ -f .nvmrc ]]; then
     nvm use
   fi
+}
 
-  if [[ -d pyenv ]]; then
-    source pyenv/bin/activate
-  fi
+function findbyport {
+  lsof -i -P G $1 | cut -d' ' -f1-7
 }
