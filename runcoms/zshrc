@@ -54,14 +54,6 @@ function em {
   fi
 }
 
-function chpwd {
-  emulate -L zsh
-
-  if [[ -f .nvmrc ]]; then
-    nvm use
-  fi
-}
-
 function findbyport {
   lsof -i -P G $1 | cut -d' ' -f1-7
 }
