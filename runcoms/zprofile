@@ -54,6 +54,8 @@ cdpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $HOME/.stack/snapshots/x86_64-linux/lts-5.15/7.10.3/bin
+  $HOME/.stack/programs/x86_64-linux/ghc-7.10.3/bin
   $HOME/{bin,.local/bin}
   /usr/local/{bin,sbin}
   $path
@@ -89,3 +91,5 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 # User level hosts file
 #
 export HOSTALIASES=~/.hosts
+
+export ELECTRON_USE_UBUNTU_NOTIFIER=1

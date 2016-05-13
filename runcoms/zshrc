@@ -38,6 +38,9 @@ alias root=sudo -i
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+alias ta="tmux attach -t"
+alias tn="tmux new -s"
+
 alias d=docker
 alias drm='docker rm $(docker ps -aq)'
 alias c=docker-compose
@@ -57,3 +60,6 @@ function em {
 function findbyport {
   lsof -i -P G $1 | cut -d' ' -f1-7
 }
+
+export NVM_DIR="/home/anler/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
